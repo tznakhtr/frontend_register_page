@@ -5,7 +5,7 @@ function Home() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('https://backend-register-page-gyaa.onrender.com')
+        axios.get('https://backend-register-page-gyaa.onrender.com/home')
             .then(result => setUsers(result.data))
             .catch(err => console.log(err));
     }, []);

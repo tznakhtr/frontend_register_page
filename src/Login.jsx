@@ -11,7 +11,7 @@ function Login(){
 
        const handleSubmit =(e)=>{
     e.preventDefault()
-    axios.post('https://backend-register-page-gyaa.onrender.com',{email,password})
+    axios.post('https://backend-register-page-gyaa.onrender.com/login',{email,password})
     .then(result=> {
         console.log(result)
         if(result.data === "Success"){

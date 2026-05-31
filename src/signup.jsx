@@ -11,7 +11,7 @@ function Signup()  {
   const navigate = useNavigate()
   const handleSubmit =(e)=>{
     e.preventDefault()
-    axios.post('https://backend-register-page-gyaa.onrender.com',{name,email,password})
+    axios.post('https://backend-register-page-gyaa.onrender.com/register',{name,email,password})
     .then(result=> {console.log(result)
     navigate('/Login')
   })
