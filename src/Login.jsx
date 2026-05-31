@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -11,7 +11,6 @@ function Login() {
         e.preventDefault();
         axios.post('https://backend-register-page-gyaa.onrender.com/login', { email, password })
             .then(result => {
-                console.log(result);
                 if (result.data === "Success") {
                     navigate('/home');
                 } else {
@@ -25,10 +24,11 @@ function Login() {
         <div className="login-container">
             <form onSubmit={handleSubmit}>
                 <h2>Login</h2>
-                <input type="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} />
+                <input type="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)} required />
+                <input type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} required />
                 <button type="submit">Login</button>
             </form>
+            <p>Don't have an account? <Link to="/register">Register</Link></p>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Signup() {
     const [name, setName] = useState("");
@@ -12,7 +12,6 @@ function Signup() {
         e.preventDefault();
         axios.post('https://backend-register-page-gyaa.onrender.com/register', { name, email, password })
             .then(result => {
-                console.log(result);
                 navigate('/login');
             })
             .catch(err => console.log(err));
@@ -22,11 +21,12 @@ function Signup() {
         <div className="register-container">
             <form onSubmit={handleSubmit}>
                 <h2>Register</h2>
-                <input type="text" placeholder="Enter Name" onChange={(e) => setName(e.target.value)} />
-                <input type="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} />
+                <input type="text" placeholder="Enter Name" onChange={(e) => setName(e.target.value)} required />
+                <input type="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)} required />
+                <input type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} required />
                 <button type="submit">Register</button>
             </form>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
         </div>
     );
 }
